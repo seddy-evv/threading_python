@@ -10,15 +10,19 @@ def thread_function(name):
 
 
 if __name__ == "__main__":
-    format = "%(asctime)s: %(message)s"
-    logging.basicConfig(format=format, level=logging.INFO,
+    format_str = "%(asctime)s: %(message)s"
+    logging.basicConfig(format=format_str, level=logging.INFO,
                         datefmt="%H:%M:%S")
 
     logging.info("Main    : before creating thread")
     x = threading.Thread(target=thread_function, args=(1,))
+    # x = threading.Thread(target=thread_function, args=(1,), daemon=True)
     logging.info("Main    : before running thread")
     x.start()
     logging.info("Main    : wait for the thread to finish")
-
+    # If the line below is commented out, the program will not wait for thread_function to complete
+    # and continue its execution, but the function will be executed. If the thread is created with daemon=true
+    # then the line below is required otherwise the program will not wait for the thread_function to execute,
+    # and the function will not be executed.
     x.join()
     logging.info("Main    : all done")
