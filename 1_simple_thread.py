@@ -1,3 +1,8 @@
+"""
+The code below works with two threads: the main thread and one started with the threading.
+"""
+
+
 import logging
 import threading
 import time
