@@ -40,22 +40,22 @@ class Pipeline:
         logging.debug("%s:getlock released", name)
 
 
-def producer(pipeline):
+def producer(pipeline_atr):
     """Pretend we're getting a message from the network."""
     for index in range(10):
         message = random.randint(1, 101)
         logging.info("Producer got message: %s", message)
-        pipeline.set_message(message, "Producer")
+        pipeline_atr.set_message(message, "Producer")
 
     # Send a sentinel message to tell consumer we're done
-    pipeline.set_message(SENTINEL, "Producer")
+    pipeline_atr.set_message(SENTINEL, "Producer")
 
 
-def consumer(pipeline):
+def consumer(pipeline_atr):
     """Pretend we're saving a number in the database."""
     message = 0
     while message is not SENTINEL:
-        message = pipeline.get_message("Consumer")
+        message = pipeline_atr.get_message("Consumer")
         if message is not SENTINEL:
             logging.info("Consumer storing message: %s", message)
 
