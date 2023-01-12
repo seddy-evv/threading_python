@@ -1,3 +1,8 @@
+"""
+An example of how code works with multiple threads using ThreadPoolExecutor.
+"""
+
+
 import logging
 import concurrent.futures
 import time

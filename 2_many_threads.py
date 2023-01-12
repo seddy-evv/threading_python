@@ -1,3 +1,8 @@
+"""
+An example of how code works with multiple threads using Thread object.
+"""
+
+
 import logging
 import threading
 import time
