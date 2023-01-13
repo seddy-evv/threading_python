@@ -1,3 +1,8 @@
+"""
+Code example solving Race Conditions issue using Lock.
+"""
+
+
 import logging
 import concurrent.futures
 import time
